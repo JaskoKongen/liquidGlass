@@ -8,7 +8,8 @@ interface GlassContainerProps {
   className?: string; 
   contentClassName?: string;
   element?: keyof JSX.IntrinsicElements;
-  glassOpacity?: number; // New prop for controlling white layer opacity (0.0 to 1.0)
+  glassOpacity?: number;
+  isDarkMode?: boolean; // Added for dark mode awareness
 }
 
 const GlassContainer: React.FC<GlassContainerProps> = ({ 
@@ -18,9 +19,11 @@ const GlassContainer: React.FC<GlassContainerProps> = ({
   className, 
   contentClassName,
   element: Component = 'div',
-  glassOpacity 
+  glassOpacity,
+  isDarkMode = true // Default to dark mode if not specified
 }) => {
-  let containerClasses = `relative flex font-semibold text-white cursor-pointer bg-transparent shadow-[0_6px_6px_rgba(0,0,0,0.2),_0_0_20px_rgba(0,0,0,0.1)] transition-all duration-400 ease-[cubic-bezier(0.175,0.885,0.32,2.2)] overflow-hidden`;
+  const textColor = isDarkMode ? 'text-white' : 'text-gray-800';
+  let containerClasses = `relative flex font-semibold ${textColor} cursor-pointer bg-transparent shadow-[0_6px_6px_rgba(0,0,0,0.2),_0_0_20px_rgba(0,0,0,0.1)] transition-all duration-400 ease-[cubic-bezier(0.175,0.885,0.32,2.2)] overflow-hidden`;
 
   let currentAppliedRadiusClass = baseRounded;
 
@@ -41,13 +44,11 @@ const GlassContainer: React.FC<GlassContainerProps> = ({
     containerClasses += " min-w-[25rem]";
   }
   
-  // Determine the alpha value for the white layer
   const currentOpacity = glassOpacity !== undefined ? glassOpacity : 0.25;
 
   return (
     <Component className={`${containerClasses} ${className ?? ''}`}>
       <div className={`absolute inset-0 z-0 backdrop-blur-sm apply-lg-dist-filter ${currentAppliedRadiusClass}`}></div>
-      {/* Apply dynamic background color using inline style */}
       <div 
         className={`absolute inset-0 z-[1] ${currentAppliedRadiusClass}`}
         style={{ backgroundColor: `rgba(255, 255, 255, ${currentOpacity})` }}

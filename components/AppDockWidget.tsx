@@ -3,7 +3,7 @@ import React from 'react';
 import GlassContainer from './GlassContainer';
 
 const appIconsData = [
-  { alt: "Finder", src: "https://assets.codepen.io/923404/finder.png" },
+  { alt: "Finder", src: "1.png" }, // Corrected path
   { alt: "Maps", src: "https://assets.codepen.io/923404/map.png" },
   { alt: "Messages", src: "https://assets.codepen.io/923404/messages.png" },
   { alt: "Safari", src: "https://assets.codepen.io/923404/safari.png" },
@@ -12,14 +12,16 @@ const appIconsData = [
 
 interface AppDockWidgetProps {
   glassOpacity?: number;
+  isDarkMode?: boolean; // Added for dark mode
 }
 
-const AppDockWidget: React.FC<AppDockWidgetProps> = ({ glassOpacity }) => {
+const AppDockWidget: React.FC<AppDockWidgetProps> = ({ glassOpacity, isDarkMode = true }) => {
   return (
     <GlassContainer 
         baseRounded="rounded-[2rem]"
         contentClassName="p-4 gap-3 sm:gap-5 flex-wrap justify-center"
         glassOpacity={glassOpacity}
+        isDarkMode={isDarkMode}
     >
       {appIconsData.map((app) => (
         <a 

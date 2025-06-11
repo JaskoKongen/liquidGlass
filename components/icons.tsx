@@ -58,3 +58,24 @@ export const SearchIcon: React.FC<IconProps> = ({ className, width = "40", heigh
     <path fill={fillColor} d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
   </svg>
 );
+
+export const BluetoothIcon: React.FC<IconProps> = ({ className, width = "24", height, title, fillColor = "currentColor" }) => (
+  <svg viewBox="0 0 320 512" width={width} height={height ?? width} className={className} aria-labelledby={title ? 'bluetooth-icon-title' : undefined}>
+    {title && <title id="bluetooth-icon-title">{title}</title>}
+    <path fill={fillColor} d="M208 480c17.67 0 32-14.33 32-32V288l64.16-53.46c18.13-15.11 20.37-43.27 5.26-61.41C295.53 155 272.58 144 256 144c-6.14 0-12.28.93-18.22 2.78L126.07 97.6c-7.01-6.15-18.32-4.73-23.47 2.29L71.3 129.17c-5.15 7.01-3.73 18.32 2.29 23.47L160 224v224c0 17.67 14.33 32 32 32h16zm0-352l48 40-48 40v-80zm0 112v160l-48-40 48-40v-80z"/>
+  </svg>
+);
+
+export const MoonIcon: React.FC<IconProps> = ({ className, width = "24", height, title, fillColor = "currentColor" }) => (
+  <svg viewBox="0 0 512 512" width={width} height={height ?? width} className={className} aria-labelledby={title ? 'moon-icon-title' : undefined}>
+    {title && <title id="moon-icon-title">{title}</title>}
+    <path fill={fillColor} d="M256 32C132.3 32 32 132.3 32 256s100.3 224 224 224 224-100.3 224-224S379.7 32 256 32zM128.7 352.8c-45.2-45.2-45.2-118.4 0-163.6s118.4-45.2 163.6 0c.7.7.7 1.9 0 2.6l-20.8 20.8c-.8.8-2 .8-2.7 0C227.1 171.1 172.9 171.1 131.2 212.8c-41.7 41.7-41.7 109.6 0 151.3 41.7 41.7 109.6 41.7 151.3 0 12.5-12.5 19.3-29.4 19.3-46.8 0-8.8 7.2-16 16-16h.4c8.8 0 16 7.2 16 16 0 35.3-14.3 67.3-37.5 90.5-23.4 23.4-55.9 36.8-90.1 36.8s-66.7-13.4-90.1-36.8z"/>
+  </svg>
+);
+
+export const AirplaneIcon: React.FC<IconProps> = ({ className, width = "24", height, title, fillColor = "currentColor" }) => (
+  <svg viewBox="0 0 576 512" width={width} height={height ?? width} className={className} aria-labelledby={title ? 'airplane-icon-title' : undefined}>
+    {title && <title id="airplane-icon-title">{title}</title>}
+    <path fill={fillColor} d="M480 192H365.71L260.61 8.06A16.014 16.014 0 00246.71 0h-65.5c-10.63 0-18.3 10.17-15.54 20.43l35.43 132.5H80c-28.2 0-51.42 19.53-58.46 45.71L4.36 432.09A32.003 32.003 0 0032 448h96v48c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16v-48h128v48c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16v-48h96a32.003 32.003 0 0027.64-15.91l17.18-64.44C531.42 211.53 508.2 192 480 192zm-40 224H136c-4.88 0-9.03-3.03-10.55-7.51L96 320h384l-29.45 88.49c-1.52 4.48-5.67 7.51-10.55 7.51z"/>
+  </svg>
+);

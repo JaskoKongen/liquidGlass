@@ -3,15 +3,17 @@ import React, { useState } from 'react';
 import GlassContainer from './GlassContainer';
 
 interface SliderWidgetProps {
-  containerGlassOpacity?: number; // Opacity for the GlassContainers rendered BY this widget
-  currentGlobalGlassOpacity?: number; // The current global glass opacity value (for the new slider)
-  onGlobalGlassOpacityChange?: (opacity: number) => void; // Callback to change the global glass opacity
+  containerGlassOpacity?: number;
+  currentGlobalGlassOpacity?: number;
+  onGlobalGlassOpacityChange?: (opacity: number) => void;
+  isDarkMode?: boolean; // Added for dark mode
 }
 
 const SliderWidget: React.FC<SliderWidgetProps> = ({ 
   containerGlassOpacity, 
   currentGlobalGlassOpacity, 
-  onGlobalGlassOpacityChange 
+  onGlobalGlassOpacityChange,
+  isDarkMode = true 
 }) => {
   const [brightness, setBrightness] = useState(75);
   const [volume, setVolume] = useState(50);
@@ -24,7 +26,9 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({
 
   const displayGlobalOpacity = currentGlobalGlassOpacity !== undefined 
     ? Math.round(currentGlobalGlassOpacity * 100) 
-    : 0; // Default to 25% if undefined
+    : 0;
+
+  const labelTextColor = isDarkMode ? 'text-white/90' : 'text-gray-700';
 
   return (
     <>
@@ -34,9 +38,10 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({
         className="w-full"
         contentClassName="p-4 flex-col gap-3"
         glassOpacity={containerGlassOpacity}
+        isDarkMode={isDarkMode}
       >
         <div className="w-full">
-          <label htmlFor="brightness-slider" className="block text-sm font-medium text-white/90 mb-1">
+          <label htmlFor="brightness-slider" className={`block text-sm font-medium ${labelTextColor} mb-1`}>
             Brightness
           </label>
           <input
@@ -57,9 +62,10 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({
         className="w-full mt-4"
         contentClassName="p-4 flex-col gap-3"
         glassOpacity={containerGlassOpacity}
+        isDarkMode={isDarkMode}
       >
         <div className="w-full">
-          <label htmlFor="volume-slider" className="block text-sm font-medium text-white/90 mb-1">
+          <label htmlFor="volume-slider" className={`block text-sm font-medium ${labelTextColor} mb-1`}>
             Volume
           </label>
           <input
@@ -80,15 +86,17 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({
         className="w-full mt-4"
         contentClassName="p-4 flex-col gap-3"
         glassOpacity={containerGlassOpacity}
+        isDarkMode={isDarkMode}
       >
         <div className="w-full">
-          <label htmlFor="glass-opacity-slider" className="block text-sm font-medium text-white/90 mb-1">
-            Glass Opacity Slider          </label>
+          <label htmlFor="glass-opacity-slider" className={`block text-sm font-medium ${labelTextColor} mb-1`}>
+            Glass Opacity Slider
+          </label>
           <input
             id="glass-opacity-slider"
             type="range"
-            min="0"  // Represents 0% opacity (fully transparent white layer)
-            max="100" // Represents 100% opacity (fully opaque white layer)
+            min="0"
+            max="100"
             value={displayGlobalOpacity}
             onChange={handleGlobalOpacityChange}
             className="custom-slider"
