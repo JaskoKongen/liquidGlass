@@ -33,8 +33,8 @@ const PlayerWidget: React.FC<PlayerWidgetProps> = ({
             alt="Album art"
           />
           <div className={`flex flex-col mx-4 ${textColor}`}>
-            <h3 className="text-base font-semibold m-0">All Of Me</h3>
-            <span className={`text-sm m-0 ${subTextColor}`}>Nao</span>
+            <h3 className="text-base font-semibold m-0">Nothing</h3>
+            <span className={`text-sm m-0 ${subTextColor}`}>Nobody</span>
           </div>
         </div>
 
